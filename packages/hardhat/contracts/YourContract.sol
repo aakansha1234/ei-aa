@@ -21,6 +21,7 @@ contract YourContract {
 
   function exec(uint countr, bytes memory a1, bytes memory b1) external {
     Tx memory tx1 = txs[countr];
+    delete txs[countr];
     require(tx1.a1 == keccak256(a1));
     require(tx1.b1 == keccak256(b1));
     (bool success, bytes memory r) = tx1.a.staticcall(a1);
